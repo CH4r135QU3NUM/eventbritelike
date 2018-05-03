@@ -18,11 +18,29 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end    
+  
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to user_path(current_user)
+  end
+
   def subscribe
     @event = Event.find(params[:event_id])
     @event.attendees << current_user
     redirect_to user_path(current_user)
   end
+
+
 
   def unsubscribe
     @event = Event.find(params[:event_id])
