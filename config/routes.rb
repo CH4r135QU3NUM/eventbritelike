@@ -5,8 +5,16 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
+  
   resources :users
-  resources :events
+
+  resources :events do 
+    post '/subscribe', to: 'events#subscribe'
+    post '/unsubscribe', to: 'events#unsubscribe'
+    get '/invite', to: 'events#invite' 
+    post '/invite', to: 'events#invite'     
+    post '/invite/:id', to: 'events#subscribe_friends', as: 'user_invited'
+
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

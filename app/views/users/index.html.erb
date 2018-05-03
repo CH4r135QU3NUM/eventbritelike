@@ -1,0 +1,23 @@
+<div class="container">
+<table class="table">
+  <tr>
+    <h1>Voici la liste des utilisateurs<h1>
+    
+    <th>Name</th>
+    <th>Organised events</th>
+    <th>Attended events</th>
+    <th>User profile</th>
+  </tr>
+  
+  <% @users.each do |user| %>
+    <tr>
+        <td><%= user.name %></td>
+        <td><%= user.created_events.count %></td>
+        <td><%= user.attended_events.count%></td>
+        <td><%= link_to "Plus d'info", user_path(user.id) %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+

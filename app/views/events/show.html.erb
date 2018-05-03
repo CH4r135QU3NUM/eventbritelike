@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Voici les informations concernant l'évenement numéro <%= @event.id%></h1>
+    
+<div>
+<p>Organisateur : <%= User.find(@event.creator_id).name %></p>
+<p><%= link_to 'Voir son profil', user_path(User.find(@event.creator_id).id) %></p>
+</div>
+<div>
+  <%if @event.date.future?%>
+    <%if @event.attendees.include?(current_user)%>
+    <%= button_to "Se désinscrire de l'évenement", event_unsubscribe_path(@event), :class => 'btn btn-danger' %>
+    <%else%>
+    <%= button_to "Participer à l'évenement", event_subscribe_path(@event), :class => 'btn btn-success' %>
+    <%end%>
+  <%elsif @event.date.past?%>
+    <span class="badge-danger">Evenement passé, participation impossible</span></td>
+  <%end%>
+</div></br>
+
+    <table class="table">
+      <tr>
+        <th>Description</th>
+        <th>Date & Time</th>
+        <th>Place</th>
+        <th>Attendees</th>  
+      </tr>
+    
+        <tr>
+          <td><%= @event.description %></td>
+          <td><%= @event.date%></td>
+          <td><%= @event.place%></td>
+          <td><%= @event.attendees.count %></td>
+        </tr>
+    </table>
+</div></br></br>
+<div class="container">
+    <h2>Et voici la liste des participants à cet évenement</h2>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Voir le profil</th>
+      </tr> 
+        <tr>
+          <% @event.attendees.each do |attendee| %>
+          <td><%= attendee.name%></td>
+          <td><%= link_to 'profil', user_path(attendee.id)%></td>
+
+          <%end%>
+        </tr>
+    </table>   
+</div>
+
+

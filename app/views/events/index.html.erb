@@ -1,3 +1,4 @@
+<div class="container">
 <table class="table">
   <tr>
     <h1>Voici la liste des évenements<h1>
@@ -7,6 +8,8 @@
     <th>Place</th>
     <th>Attendees</th>
     <th>Infos</th>
+    <th>Status</th>
+    <th>Invite</th>
   </tr>
   
   <% @events.each do |event| %>
@@ -16,5 +19,16 @@
       <td><%= event.place%></td>
       <td><%= event.attendees.count %></td>
       <td><%= link_to "Plus d'info", event_path(event.id) %></td>
+      <%if event.date.today?%>
+        <td><span class="badge-success">Aujourd'hui</span>
+        <td><%= button_to "Invite friends",  event_invite_path(event), :class => 'btn btn-success' %></th>
+      <%elsif event.date.past?%>
+      <td><span class="badge-danger">Passé</span></td>
+      <%elsif event.date.future?%>
+      <td><span class="badge-info">À venir</span></td>
+      <td><%= button_to "Invite friends",  event_invite_path(event), :class => 'btn btn-success' %></th>
+      <% end %>
     </tr>
   <% end %>
+</table>
+</div>
