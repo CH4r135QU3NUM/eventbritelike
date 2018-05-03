@@ -1,0 +1,20 @@
+<table class="table">
+  <tr>
+    <h1>Voici la liste des évenements<h1>
+    
+    <th>Description</th>
+    <th>Date & Time</th>
+    <th>Place</th>
+    <th>Attendees</th>
+    <th>Infos</th>
+  </tr>
+  
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.description %></td>
+      <td><%= event.date%></td>
+      <td><%= event.place%></td>
+      <td><%= event.attendees.count %></td>
+      <td><%= link_to "Plus d'info", event_path(event.id) %></td>
+    </tr>
+  <% end %>
