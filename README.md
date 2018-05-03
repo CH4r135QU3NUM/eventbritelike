@@ -14,7 +14,8 @@ Tu es prêt ? Allons-y !
 
 App Heroku : <a href="https://afternoon-plains-99594.herokuapp.com/">ici</a>
 
-PS : Il n'y a pas d'alerte, sorry guys mais c'était too much, ça marchait pas!
+PS : Il n'y a pas d'alerte, sorry guys mais c'était too much, ça marchait pas! Du coup, si jamais il se passe rien au signup/log in c'est que votre mot de passe ou votre email n'est pas valide. Aussi, une fois que vous avez invité quelqu'un ou participé à un évenement, pas d'alterte non plus.. faut retourner voir sur l'event :).
+PS : la navigation n'est pas terrible je sais, promis, ce sera mieux la prochaine fois. 
 
 ### Gem
 
