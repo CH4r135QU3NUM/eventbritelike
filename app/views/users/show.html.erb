@@ -24,6 +24,11 @@
         <%elsif event.date.future?%>
           <td><span class="badge-info">À venir</span></td>
         <% end %>
+  
+        <% if current_user == event.creator %>
+          <td><%=link_to 'Editer', edit_event_path(event)%><td>
+          <td><%= link_to 'Supprimer', event, method: :delete %></td></br></br>
+        <%end%>
     </tr>
   <%end%>
 </table>
