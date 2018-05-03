@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2018_05_03_095238) do
   create_table "events_users", id: false, force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "user_id", null: false
-    t.index ["event_id", nil], name: "index_events_users_on_event_id_and_attendee_id"
   end
 
   create_table "users", force: :cascade do |t|

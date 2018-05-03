@@ -1,0 +1,20 @@
+<table class="table">
+  <tr>
+    <h1>Voici la liste des utilisateurs<h1>
+    
+    <th>name</th>
+    <th>Organised events</th>
+    <th>Attended events</th>
+    <th>See organised events</th>
+    <th>See attended events</th>
+  </tr>
+  
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.description %></td>
+      <td><%= event.date%></td>
+      <td><%= event.place%></td>
+      <td><%= event.attendees.count %></td>
+      <td><%= link_to "Plus d'info", event_path(event.id) %></td>
+    </tr>
+  <% end %>
